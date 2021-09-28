@@ -1,6 +1,7 @@
 import axios from 'axios'
+import config from '../configs/config'
 
-const baseURL = "http://localhost:8000/api"
+const baseURL =  config.SERVER_URI//"https://simply-luxury.herokuapp.com/api"//"http://localhost:8000/api"
 
 const api = axios.create({
     baseURL: baseURL

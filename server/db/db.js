@@ -9,14 +9,6 @@ const test_config = {
     port: process.env.TEST_PORT,
 }
 
-const production_config = {
-    user: process.env.PRODUCTION_USER,
-    host: process.env.PRODUCTION_HOST,
-    database: process.env.PRODUCTION_DATABASE,
-    password: process.env.PRODUCTION_PASSWORD,
-    port: process.env.PRODUCTION_PORT,
-}
-
 const proConfig = {
     connectionString: process.env.DATABASE_URL,
     ssl: {
@@ -25,7 +17,7 @@ const proConfig = {
 }
 
 const pool = new Pool(
-    process.env.NODE_ENV === "production" ? proConfig : test_config, 
+    process.env.NODE_ENV === "production" ? proConfig : test_config
 )
 
 module.exports = pool

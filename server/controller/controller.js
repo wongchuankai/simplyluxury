@@ -5,6 +5,8 @@ require('dotenv').config()
 const getAllProduct = (req, res) => {
     pool.query(queries.getAllProducts, (error, results) => {
         if(error) {
+            console.log(error)
+
             return res.status(200).json({
                 results: []
             })
