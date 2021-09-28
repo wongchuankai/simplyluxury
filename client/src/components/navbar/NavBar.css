@@ -1,0 +1,16 @@
+.navbar-bg {
+    background-color: #fff1b5;
+}
+
+.navbar-logo {
+    margin-left: 10%;
+    font-weight: bold;
+    letter-spacing: .1rem;
+    font-family: 'Ephesis', cursive;
+    font-size: 30px;
+}
+
+.navbar-section {
+    font-family: 'Open Sans Condensed', sans-serif;
+
+}

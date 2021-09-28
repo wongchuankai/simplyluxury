@@ -1,0 +1,14 @@
+.CarouselSection {
+    height: 600px;
+}
+
+.carousel-image {
+    /* width: 100px; */
+    height:600px;
+    width: max-content;
+    opacity: 0.4;
+}
+
+.carousel-caption {
+    color:black
+}

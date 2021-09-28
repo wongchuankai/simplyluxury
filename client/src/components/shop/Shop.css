@@ -1,0 +1,22 @@
+.shop-top {
+    background-color: #F6F5FF;
+    height: 150px;
+    padding-left: 10%;
+    padding-top: 30px;
+    box-sizing: border-box;
+}
+
+
+.shop-top-title {
+    font-family: 'Josefin Sans', sans-serif;
+    color : #1A0B5B;
+    font-size: 30px;
+}
+
+.shop-products-section {
+    height: 1500px;
+}
+
+.shop-products-section-group {
+    margin-top: 50px;
+}

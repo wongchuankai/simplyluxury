@@ -1,0 +1,10 @@
+.latestProducts {
+    height: 1100px;
+    margin-top: 70px;
+}
+
+.latestProducts-title {
+    text-align: center;
+    font-family: 'Josefin Sans', sans-serif;
+    color : #1A0B5B;
+}
