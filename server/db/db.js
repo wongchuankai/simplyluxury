@@ -18,11 +18,14 @@ const production_config = {
 }
 
 const proConfig = {
-    connectionString: process.env.DATABASE_URL // for heroku
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false,
+    }               // for heroku
 }
 
 const pool = new Pool(
-    process.env.NODE_ENV === "production" ? proConfig : test_config
+    process.env.NODE_ENV === "production" ? proConfig : test_config, 
 )
 
 module.exports = pool
