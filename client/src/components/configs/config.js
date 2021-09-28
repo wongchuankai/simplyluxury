@@ -5,7 +5,7 @@ const configs = {
       SERVER_URI: 'http://localhost:8000/api',
     },
     production: {
-      SERVER_URI: process.env.SERVER_URI,
+      SERVER_URI: "https://simply-luxury.herokuapp.com/api",
     },
 };
   
