@@ -15,7 +15,7 @@ function CarouselSection() {
     }
 
     const goToProductsHandler = () => {
-        history.push("/products");
+        history.push("/shop");
     }
 
     return (
