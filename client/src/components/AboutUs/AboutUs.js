@@ -27,7 +27,7 @@ function AboutUs() {
                             <Col>
                                 <Typography gutterBottom style={{textAlign:"center", fontFamily:"'Josefin Sans', sans-serif", fontSize:"25px", paddingTop:"50px", color:"#101750"}} >Information About Us</Typography>
                                 <Typography variant="subtitle1" gutterBottom style={{ fontSize:"20px", paddingTop:"20px"}} className="checkout-main-subtitle">
-                                    Hi, My name is Wong Chuan Kai. <br/> Welcome to my site. <br/> This site is to demostrate React and NodeJS. <br/> <GitHubIcon/> <a href="https://github.com/wongchuankai">My Github</a>
+                                    Hi, My name is Wong Chuan Kai. <br/> Welcome to my site. <br/> This site is to demostrate React and NodeJS. <br/> <GitHubIcon/> <a href="https://github.com/wongchuankai">My Github</a> <br/><GitHubIcon/><a href="https://github.com/wongchuankai/simplyluxury">SimplyLuxury Github Repo</a>
                                 </Typography>   
                             </Col>
                             <Col>
