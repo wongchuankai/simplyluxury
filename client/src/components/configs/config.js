@@ -2,10 +2,10 @@ require('dotenv').config()
 
 const configs = {
     development: {
-      SERVER_URI: 'http://localhost:8000/api',
+      SERVER_URI: 'http://localhost:8000/api'
     },
     production: {
-      SERVER_URI: "https://simply-luxury.herokuapp.com/api",
+      SERVER_URI: process.env.REACT_APP_SERVER_URI
     },
 };
   
