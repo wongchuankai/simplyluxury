@@ -22,7 +22,6 @@ function Footer() {
         }).catch( error => {
             setShow(true)
         })
-        
     }
 
     return (

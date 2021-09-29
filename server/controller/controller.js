@@ -112,7 +112,7 @@ const getProductPageNo = (req, res) => {
         const startingItem = (pageNumber - 1) * 12
         const endingItem = (pageNumber * 12)
         const paginatedResults = productList.slice(startingItem,endingItem)
-        console.log(paginatedResults)
+        // console.log(paginatedResults)
         return res.status(200).json({
             results: paginatedResults, totalProductSize: productList.length
         })
@@ -206,7 +206,7 @@ const getProductByIDs = (req, res) => {
                 counter[user_shopping_cart_list[i]] =  1
             }
         }
-        console.log((counter))
+        // console.log((counter))
         for(let i = 0; i < processedItemList.length; i++) {
             processedItemList[i]["quantity"] = counter[processedItemList[i].productid]
         }
