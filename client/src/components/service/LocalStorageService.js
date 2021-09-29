@@ -10,7 +10,6 @@ const LocalStorageService = () => {
 
     function _addToCart(id) {
         // console.log(id)
-        console.log("here")
         var cartLocalStorageData = _getCart()
         if(cartLocalStorageData === "") {
             _clearCart()

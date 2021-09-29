@@ -19,7 +19,7 @@ function Shop() {
                 api.getResultPaginated({
                     "pageno": activePageNo 
                 }).then((res)=>{
-                    console.log(res.data)
+                    // console.log(res.data)
                     setItemList(res.data.results)
                     setTotalProductSize(res.data.totalProductSize)
                 }).catch(err=> {
@@ -30,7 +30,7 @@ function Shop() {
                 api.getAllProductPriceAsc({
                     "pageno": activePageNo 
                 }).then((res)=>{
-                    console.log(res.data)
+                    // console.log(res.data)
                     setItemList(res.data.results)
                     setTotalProductSize(res.data.totalProductSize)
                 }).catch(err=> {
@@ -41,7 +41,7 @@ function Shop() {
                 api.getAllProductPriceDesc({
                     "pageno": activePageNo 
                 }).then((res)=>{
-                    console.log(res.data)
+                    // console.log(res.data)
                     setItemList(res.data.results)
                     setTotalProductSize(res.data.totalProductSize)
                 }).catch(err=> {

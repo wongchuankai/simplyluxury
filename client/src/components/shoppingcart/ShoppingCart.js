@@ -69,7 +69,7 @@ function ShoppingCart() {
                 }
             }
             LocalStorageService.SetCart(user_shopping_cart)
-            console.log(LocalStorageService.getCart())
+            // console.log(LocalStorageService.getCart())
             setIsQuantityUpdated(false)
         }
     }, [isQuantityUpdated, itemList])
@@ -82,7 +82,7 @@ function ShoppingCart() {
                 api.getProductByIDs({ productIDs: user_shopping_cart}).then( res => {
                     if(res.data.results.length > 0) {
                         var processedItemList = res.data.results
-                        console.log(processedItemList)
+                        // console.log(processedItemList)
                         setItemList(processedItemList)
                         var checkedBoxList = []
                         for(let i = 0; i < processedItemList.length; i++) {
@@ -91,7 +91,7 @@ function ShoppingCart() {
                                 checked: false
                             })
                         }
-                        console.log(checkedBoxList)
+                        // console.log(checkedBoxList)
                         setCheckedBoxItems(checkedBoxList)
                     }
                 }).catch( err => {
@@ -139,7 +139,7 @@ function ShoppingCart() {
             prev.forEach(item => {
                 item.checked = event.target.checked
             })
-            console.log(prev)
+            // console.log(prev)
             return prev
             }
         )
