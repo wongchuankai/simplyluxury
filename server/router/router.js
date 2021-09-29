@@ -8,5 +8,6 @@ router.post('/getallproducts/price-asc', controller.getProductSortedLowestHighes
 router.post('/getallproducts/price-desc', controller.getProductSortedHighestLowest)
 router.post('/getProductByID', controller.getProductByID)
 router.post('/getProductByIDs', controller.getProductByIDs)
+router.post('/emailsignup', controller.emailSignUp)
 
 module.exports = router

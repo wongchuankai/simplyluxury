@@ -1,6 +1,43 @@
 const pool = require('../db/db')
 const queries = require('../queries/queries')
+const nodemailer = require('nodemailer')
+
 require('dotenv').config()
+
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.SIMPLY_LUXURY_EMAIL,
+      pass: process.env.SIMPLY_LUXURY_PASSWORD
+    }
+})
+
+const emailSignUp = (req, res) => {
+    const body = req.body
+    const email = body.email
+    var mailOptions = {
+        from: process.env.SIMPLY_LUXURY_EMAIL,
+        to: email,
+        subject: 'Signing up to Simply Luxury',
+        text: 'Thank you for signing up with us!'
+    };
+      
+    transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+        console.log(error);
+        res.status(400).json({
+            result: false,
+            message: "error in signing up"
+        })
+    } else {
+        console.log('Email sent: ' + info.response);
+        res.status(200).json({
+            result: true,
+            message: "You have successfully sign up."
+        })
+    }
+    });
+}
 
 const getAllProduct = (req, res) => {
     pool.query(queries.getAllProducts, (error, results) => {
@@ -148,4 +185,5 @@ module.exports = {
     getProductSortedHighestLowest,
     getProductByID,
     getProductByIDs,
+    emailSignUp
 }
