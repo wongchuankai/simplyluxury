@@ -1,8 +1,15 @@
 const pool = require('../db/db')
 const queries = require('../queries/queries')
 const nodemailer = require('nodemailer')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken');
+const auth = require('../auth/auth')
 
 require('dotenv').config()
+
+function hashPassword(password) {
+    return bcrypt.hash(password, 10)
+}
 
 var transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -217,13 +224,93 @@ const getProductByIDs = (req, res) => {
     })
 }
 
-// const getProductByID = (req, res) => {
-//     const body = 
-//     pool.query(queries.getProductByID, (error, results) => {
-//         if(error) throw error;
-//         res.status(200).json(results.rows)
-//     })
-// }
+const newUser = async (req, res , next) => {
+    console.log("FINAL")
+    return res.json({
+        message: 'Signup successful',
+        user: req.user
+    })
+}
+
+function createToken(userID, username) {
+    const body = {
+        userID: userID,
+        username: username
+    }
+    const jwtToken = jwt.sign({
+        user: body
+    }, process.env.JWT_SECRET)
+    return jwtToken
+}
+
+function usernameAlreadyExist(username) {
+    return `Key (username)=(${username}) already exists.`
+}
+
+const signup = async (req, res) => {
+    const body = req.body
+    const username = body.username
+    const password = body.password
+    var hashedPassword = await hashPassword(password, 10)
+    pool.query(queries.signUpQuery, [username, hashedPassword], (error, result) => {
+        if(error) {
+            if(usernameAlreadyExist(username) === error["detail"]) {
+                return res.status(400).json({
+                    success: false,
+                    msg: "Username already taken"
+                })    
+            }
+            return res.status(400).json({
+                success: false,
+                msg: "Error when signing up"
+            })
+        } 
+        return res.status(200).json({
+            success: true,
+            msg: "Sign up successful"
+        })
+    })
+}
+
+const login = async (req, res) => {
+    const body = req.body
+    const username = body.username
+    const password = body.password
+    
+    pool.query(queries.loginQueryUsername, [username], (error, result) => {
+        if(error) {
+            return res.status(400).json({
+                success: false,
+                msg: "Error when signing up"
+            })
+        } 
+        if(result.rows.length === 0) {
+            return res.status(200).json({
+                success: false,
+                msg: "Invalid username"
+            })
+        }
+        const userResult = result.rows[0]
+        bcrypt.compare(password, userResult.password, (err, data) => {
+            if(err)  {
+                return res.status(400).json({
+                    success: false,
+                    msg: "Error when signing up"
+                })
+            }
+            if (data) {
+                const token = createToken( userResult.userid ,username)
+                return res.status(200).json({
+                    success: true,
+                    token: token,
+                    msg: "Login successful",
+                })
+            } else {
+                return res.status(401).json({ success: false, msg: "Wrong Password" })
+            }
+        })
+    })
+}
 
 module.exports = {
     getAllProduct,
@@ -233,5 +320,8 @@ module.exports = {
     getProductByID,
     getProductByIDs,
     emailSignUp,
-    contactMsg
+    contactMsg,
+    newUser,
+    signup,
+    login
 }

@@ -7,3 +7,9 @@ CREATE TABLE productitem (
     description VARCHAR(255),
     image VARCHAR(255)   
 );
+
+CREATE TABLE users (
+    userID serial,
+    username VARCHAR(255) UNIQUE PRIMARY KEY,
+    password VARCHAR(255)
+);

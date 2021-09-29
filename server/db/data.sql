@@ -14,3 +14,7 @@ INSERT INTO productitem(itemname, price, description, image) VALUES('Grey Leathe
 INSERT INTO productitem(itemname, price, description, image) VALUES('Brown Table', 199, 'Sturdy brown table with mini compartment for your room.', 'https://simply-luxury-bucket.s3.ap-southeast-1.amazonaws.com/furniture_14.png');
 INSERT INTO productitem(itemname, price, description, image) VALUES('White Table', 249, 'White table with large compartment for your room.', 'https://simply-luxury-bucket.s3.ap-southeast-1.amazonaws.com/furniture_15.png');
 INSERT INTO productitem(itemname, price, description, image) VALUES('Basic Table', 145, 'Basic table for your room.', 'https://simply-luxury-bucket.s3.ap-southeast-1.amazonaws.com/furniture_16.png');
+
+
+INSERT INTO users(username, password) VALUES('test', '123'); 
+INSERT INTO users(username, password) VALUES('admin', 'admin'); 
