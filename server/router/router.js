@@ -9,5 +9,6 @@ router.post('/getallproducts/price-desc', controller.getProductSortedHighestLowe
 router.post('/getProductByID', controller.getProductByID)
 router.post('/getProductByIDs', controller.getProductByIDs)
 router.post('/emailsignup', controller.emailSignUp)
+router.post('/contactMsg', controller.contactMsg)
 
 module.exports = router

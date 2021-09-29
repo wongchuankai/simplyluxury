@@ -14,6 +14,7 @@ const getProductByIDs = (payload) => api.post('/getProductByIDs', payload)
 const getAllProductPriceAsc = (payload) => api.post('/getallproducts/price-asc', payload)
 const getAllProductPriceDesc = (payload) => api.post('/getallproducts/price-desc', payload)
 const signupEmail = (payload) => api.post('/emailsignup', payload)
+const contactMsg = (payload) => api.post('/contactMsg', payload)
 
 const apis = {
     getAllProduct,
@@ -22,7 +23,8 @@ const apis = {
     getResultPaginated,
     getProductByID,
     getProductByIDs,
-    signupEmail
+    signupEmail,
+    contactMsg
 }
 
 export default apis

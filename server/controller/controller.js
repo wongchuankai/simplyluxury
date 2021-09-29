@@ -39,6 +39,53 @@ const emailSignUp = (req, res) => {
     });
 }
 
+const contactMsg = (req, res) => {
+    const body = req.body
+    const name = body.name
+    const email = body.email
+    const msg = body.msg
+    // if()
+    var mailOptions = {
+        from: process.env.SIMPLY_LUXURY_EMAIL,
+        to: email,
+        subject: 'Get In Touch With Simply Luxury',
+        text: `Dear, ${name}, Thank you for getting touch with us!`
+    };
+      
+    transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+        console.log(error);
+        res.status(400).json({
+            result: false,
+            message: "error in signing up"
+        })
+    } else {
+        console.log('Email sent: ' + info.response);
+        var mailOptions = {
+            from: process.env.SIMPLY_LUXURY_EMAIL,
+            to: process.env.MY_EMAIL,
+            subject: 'Get In Touch With Simply Luxury',
+            text: `${name}, ${email}, ${msg}`
+        };
+        transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+                console.log(error);
+                res.status(400).json({
+                    result: false,
+                    message: "error in signing up"
+                })
+            } else {
+                console.log('Email sent: ' + info.response);
+                res.status(200).json({
+                    result: true,
+                    message: "You have successfully sign up."
+                })
+            }
+        });
+    }
+    });
+}
+
 const getAllProduct = (req, res) => {
     pool.query(queries.getAllProducts, (error, results) => {
         if(error) {
@@ -185,5 +232,6 @@ module.exports = {
     getProductSortedHighestLowest,
     getProductByID,
     getProductByIDs,
-    emailSignUp
+    emailSignUp,
+    contactMsg
 }
